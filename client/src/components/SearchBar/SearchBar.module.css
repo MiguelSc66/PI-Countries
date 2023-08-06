@@ -1,0 +1,29 @@
+button {
+  width: 150px;
+  height: 60px;
+  border: 3px solid #315cfd;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: white;
+  font-size: 1.2em;
+  font-weight: 550;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button:hover {
+  background: #315cfd;
+  color: rgb(168, 146, 146);
+}
+/* Estilo para el input del SearchBar */
+input[type="search"] {
+  width: 190px;
+  height: 60px;
+  border: 3px solid #315cfd;
+  border-radius: 45px;
+  padding: 10px 8px; /* Ajusta el espaciado interno del input */
+  font-size: 1.2em;
+  font-weight: 50;
+  font-family: 'Montserrat', sans-serif;
+  outline: none; /* Elimina el resaltado del input al hacer clic */
+}

@@ -1,0 +1,82 @@
+.image {
+    position:absolute; /* Posiciona el div de la imagen de fondo */
+    top: 0; /* Coloca el div en la parte superior */
+    left: 0; /* Coloca el div en la parte izquierda */
+    width: 100%; /* Ancho del div igual al 100% del contenedor */
+    height: 100%; /* Altura del div igual al 100% del contenedor */
+    z-index: -1; /* Coloca el div detrás de los demás elementos */
+    opacity: 0.6;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+/* Estilos para el elemento <h1> */
+.h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  background-color: rgba(0, 0, 0);
+  border-radius: 10px;
+  margin-top: 50px; /* Espacio entre la parte superior y el título */
+}
+
+/* Estilos para el contenedor del título */
+.title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.descriptionContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  border: 2px solid #333; /* Borde resaltado */
+  border-radius: 10px; /* Bordes redondos */
+  padding: 20px;
+  max-width: 80%; /* Ancho máximo para el contenido */
+}
+
+.description {
+  text-align: center;
+}
+.description p {
+  font-weight: bold; /* Hace el texto más grueso */
+  font-family: "Nombre de la fuente", sans-serif; /* Cambia la fuente */
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 30vh;
+}
+
+.arrowButton {
+  background-color: blue; /* Fondo azul */
+  color: white;
+  padding: 10px 17px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+}

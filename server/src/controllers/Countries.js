@@ -3,11 +3,40 @@ const { Op} = require("sequelize")
 
 async function getCountries(req, res) {
     try {
-        const countries = await Country.findAll({ include: Activity });
+        const countries = await Country.findAll({ include: Activity, through: {
+            attribute: [],
+          } });
         res.status(200).json(countries);
     } catch (err) {
         console.error("Error al obtener los paises", err)
         res.status(404).json({error: "Error al obtener los paises"})
+    }
+}
+
+async function nameCountry(req, res) {
+    const {pais} = req.query;
+    try {
+        const minMayus = {
+            [Op.or]: [
+                {
+                    nombre: {
+                        [Op.like]: `${pais}%`,
+                    },
+                },
+                {
+                    nombre: {
+                        [Op.iLike]: `${pais}%`
+                    },
+                },
+            ],
+        }
+        const countryName = await Country.findAll({
+            where: minMayus,
+            include: Activity
+          });
+          res.send(countryName);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 }
 
@@ -26,35 +55,10 @@ async function idCountry(req, res)  {
     }
 }
 
-async function nameCountry(req, res) {
-    const {pais} = req.params;
-    try {
-        const minMayus = {
-            [Op.or]: [
-                {
-                    name: {
-                        [Op.like]: `%${pais}%`,
-                    },
-                },
-                {
-                    name: {
-                        [Op.ilike]: `%${pais}%`
-                    },
-                },
-            ],
-        }
-        const countryName = await Country.findAll({
-            where: minMayus,
-            include: Activity
-          });
-          res.send(countryName);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-}
+
 
 module.exports = {
     getCountries,
-    idCountry,
-    nameCountry
+    nameCountry,
+    idCountry
 }

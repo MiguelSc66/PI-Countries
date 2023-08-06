@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Activity', {
-        ID: {
+        id: {
             type:DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement:true
@@ -28,5 +28,5 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('verano', 'otoño', 'invierno', 'primavera'),
             allowNull:false,
         },
-    });
+    }, { timestamps: false });
 }

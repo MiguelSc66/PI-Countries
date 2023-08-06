@@ -37,13 +37,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-  });
+  }, { timestamps: false });
 };
 
-// function generateCountryCode(cca3) {
-//   return cca3.toUpperCase();
-// }
-
-// Country.beforeCreate((country, options) => {
-//   country.ID = generateCountryCode(country.cca3);
-// });

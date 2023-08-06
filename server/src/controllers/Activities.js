@@ -3,7 +3,9 @@ const {Country, Activity} = require("../db");
 
 async function getActivities(req, res) {
   try {
-    const activities = await Activity.findAll({ include: Country });
+    const activities = await Activity.findAll({ include: Country, through: {
+      attribute: [],
+    } });
     res.status(200).json(activities);
   } catch (err) {
     console.error("Error al obtener las actividades", err);
@@ -12,15 +14,15 @@ async function getActivities(req, res) {
 }
 
 async function createActivity(req, res) {
-  const { name, difficulty, duration, season, countries } = req.body;
+  const { Nombre, Dificultad, Duracion, Temporada, countries } = req.body;
   
   try {
     // Crea la actividad turística en la base de datos
     const newActivity = await Activity.create({
-      name,
-      difficulty,
-      duration,
-      season,
+      Nombre,
+      Dificultad,
+      Duracion,
+      Temporada,
     });
     await newActivity.setCountries(countries);
 

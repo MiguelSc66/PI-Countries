@@ -1,0 +1,30 @@
+/* home.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.containerCountries {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
