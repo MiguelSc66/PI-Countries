@@ -28,3 +28,30 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.back {
+  position: fixed; /* Cambiamos a posición fija */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none; /* Evitamos que el fondo interactúe con eventos */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Agrega un espacio entre los botones */
+  margin-top: 10px; /* Ajusta el margen superior */
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}

@@ -5,6 +5,7 @@ import Landingpage from "./components/landing-page/landingpage"
 import Home from "./components/Home/homePage"
 import axios from "axios"
 import SearchBar from './components/SearchBar/searchbar'
+import Detail from './Detail/Detail'
 
 const Page = 10;
 
@@ -13,6 +14,7 @@ function App() {
   const [search, setSearch] = useState([]);
   const [paginado, setPaginado] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const location = useLocation();
 
   useEffect(
     () => {
@@ -72,10 +74,11 @@ function App() {
 
   return (
     <div>
-      <SearchBar onSearch={onSearch}></SearchBar>
+      {location.pathname !== '/' && !location.pathname.startsWith('/detail/') && <SearchBar onSearch={onSearch} />}
       <Routes>
         <Route path='/' element={<Landingpage />} />
         <Route path='/home' element={<Home countries={paginado} onSearch={onSearch} nextButtom={nextButtom} prevButtom={prevButtom} />} />
+        <Route path='/detail/:id' element={<Detail></Detail>}/>
       </Routes>
     </div>
   )

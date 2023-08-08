@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.flag {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto es para ajustar la imagen al tamaño del contenedor */
+  z-index: -1; /* Para colocar la imagen detrás del contenido */
+}
+.data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #007bff; /* Borde marcado de color azul */
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.value {
+  flex: 1;
+  text-align: right;
+}
+

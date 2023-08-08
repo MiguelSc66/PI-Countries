@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+a:link,
+a:visited {
+  color: #000; /* Establece el color de los enlaces y enlaces visitados */
+  text-decoration: none; /* Elimina la decoración de subrayado del enlace */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
