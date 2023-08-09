@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import style from "./Cards.module.css"
 
 export default function Cards({countries}) {
+    console.log(countries)
     return <div className={style.conteiner}>
         {countries.map((obj) => {
             return <Card
