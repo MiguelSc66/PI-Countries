@@ -3,17 +3,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import style from "./Detail.module.css";
 import { useParams, Link, useLocation } from "react-router-dom";
-import imgBack from "../components/img/pexels.jpg"
+import { useDispatch, useSelector } from "react-redux";
+import imgBack from "../img/pexels.jpg"
 
 export default function Detail() {
   const { id } = useParams();
   const [country, setCountries] = useState({});
+  const [activity, setActivity] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
     axios(`http://localhost:3001/countries/${id}`).then((response) => {
       if (response.data.nombre) {
         setCountries(response.data);
+        setActivity(response.data.Activities)
       } else {
         window.alert("No se encuentra ese pais");
       }
@@ -61,6 +64,29 @@ export default function Detail() {
       <div className={style.data}>
         <span className={style.label}>Population:</span>
         <span className={style.value}>{country.poblacion}</span>
+      </div>
+      <h3 className={style.data}>Activities</h3>
+      <div>
+        {activity.map((activites) => ( 
+          <div key={activites.id}>
+            <div className={style.data}>
+              <span className={style.label}>Name:</span>
+              <span className={style.value}>{activites.Nombre}</span>
+            </div>
+            <div className={style.data}>
+            <span className={style.label}>Dificulty:</span>
+            <span className={style.value}>{activites.Dificultad}</span>
+            </div>
+            <div className={style.data}>
+            <span className={style.label}>Duration:</span>
+            <span className={style.value}>{activites.Duracion}</span>
+            </div>
+            <div className={style.data}>
+            <span className={style.label}>Season:</span>
+            <span className={style.value}>{activites.Temporada}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

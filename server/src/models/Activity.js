@@ -4,9 +4,10 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('Activity', {
         id: {
-            type:DataTypes.INTEGER,
+            type:DataTypes.UUID,
             primaryKey: true,
-            autoIncrement:true
+            allowNull : false,
+            defaultValue: DataTypes.UUIDV4
         },
         Nombre: {
             type: DataTypes.STRING(250),

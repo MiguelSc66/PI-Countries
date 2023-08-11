@@ -1,5 +1,3 @@
-/* home.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -8,8 +6,24 @@
 }
 
 .title {
-  margin-top: 20px;
+  margin-top: 5px; /* Reducir el margen superior */
+  margin-bottom: 5px; /* Reducir el margen inferior */
 }
+
+.filters {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 10px;
+  width: 50%;
+}
+
+.filterSelect {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 
 .searchBar {
   display: flex;
@@ -29,21 +43,21 @@
   justify-content: space-evenly;
 }
 .back {
-  position: fixed; /* Cambiamos a posición fija */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  pointer-events: none; /* Evitamos que el fondo interactúe con eventos */
+  pointer-events: none; 
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Agrega un espacio entre los botones */
-  margin-top: 10px; /* Ajusta el margen superior */
+  gap: 10px; 
+  margin-top: 10px; 
 }
 
 .button {

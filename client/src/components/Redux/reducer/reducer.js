@@ -9,11 +9,15 @@ const initialState = {
   const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case "GET_COUNTRIES":
-            
         return {
             ...state,
             countries: action.payload,
             allCountries: action.payload, 
+        }
+        case "GET_ACTIVITIES":
+        return {
+          ...state,
+          activity: action.payload
         }
         case "SET_CURRENT_PAGE":
         return {
@@ -21,18 +25,21 @@ const initialState = {
             currentPage: action.payload,
         };
 
-      case "SET_COUNTRIES":
+        case "SET_ACTIVITIES":
+          const filterdAct = state.allCountries.filter((country) =>  {
+            return country.Activities.length >= 1;
+          })
+          console.log(filterdAct);
+          return {
+            ...state,
+            countries: action.payload === "Activities" ? filterdAct : state.allCountries
+          };
+
+      case "SET_SEARCH":
         return {
           ...state,
           countries: action.payload,
-          
         };
-        case "ACTIVITY": 
-        return {
-            ...state,
-            countries:action.payload,
-            activity: action.payload
-        }
       case "FILTER_COUNTRIES":
         return {
             ...state,
@@ -40,6 +47,7 @@ const initialState = {
           };
       case "SORT_COUNTRIES":
         const sortOption = action.payload;
+        console.log(sortOption)
         const sortedCountries = [...state.countries];
   
         if (sortOption === "nameAsc") {

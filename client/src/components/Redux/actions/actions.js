@@ -10,26 +10,61 @@ export const getCountries = () => {
                 payload: data
             })
         } catch (err) {
-            console.log
+            console.log(err)
         }
     }
 }
-export const setCurrentPage = (page) => {
+
+export const getActivities = () => {
+  return async (disp) => {
+    try {
+      const {data} = await axios(`http://localhost:3001/activities`)
+      return disp({
+        type:"GET_ACTIVITIES",
+        payload: data,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
+export const filterActivity = (activities) => {
+    console.log(activities)
     return {
-      type: "SET_CURRENT_PAGE",
-      payload: page,
+      type: "SET_ACTIVITIES",
+      payload: activities,
     };
 };
   
+export const postActivity = (dato)  => {
+  return async (dispatch) => {
+    try {
+      await axios.post(`http://localhost:3001/activities`, dato).then((response) => response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 
-export const setCountries = (countries) => {
-  return {
-    type: "SET_COUNTRIES",
-    payload: countries,
-  };
-};
+
+export const Search = (name) => {
+  return async (dispatch) => {
+    try {
+      const {data} =  await axios(`http://localhost:3001/countries/name?pais=${name}`);
+      console.log(data)
+      return dispatch({
+        type: "SET_SEARCH",
+        payload: data,
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
 
 export const filterCountries = (filterData) => {
+  console.log(filterData)
   return {
     type: "FILTER_COUNTRIES",
     payload: filterData,

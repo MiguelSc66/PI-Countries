@@ -16,8 +16,11 @@ async function getActivities(req, res) {
 async function createActivity(req, res) {
   const { Nombre, Dificultad, Duracion, Temporada, countries } = req.body;
   
+
   try {
     // Crea la actividad turística en la base de datos
+    if(!Nombre || !Dificultad || !Duracion || !Temporada || !countries) throw Error("Faltan propiedades");
+
     const newActivity = await Activity.create({
       Nombre,
       Dificultad,
@@ -35,6 +38,7 @@ async function createActivity(req, res) {
         },
       },
     });
+
 
     res.status(200).json(createActiviti);
   } catch (err) {

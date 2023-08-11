@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./home.module.css";
 import Cards from "../Cards/Cards";
 import imgBack from "../img/pexels-james.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCountries, sortCountries, getCountries, setCurrentPage  } from "../Redux/actions/actions";
+import { filterCountries, sortCountries, getCountries, filterActivity  } from "../Redux/actions/actions";
+import { Link } from "react-router-dom";
 
-export default function Home({ nextButtom, prevButtom }) {
+
+export default function Home() {
+  const [currentPage, setCurrentPage] = useState(0);
   const dispatch = useDispatch();
   const filteredAndSortedCountries = useSelector(
     (state) => state.countries
   );
-  const currentPage = useSelector((state) => state.currentPage); // Obtén la página actual desde Redux
-  const countriesPerPage = useSelector((state) => state.countriesPerPage); // Obtén la cantidad de países por página desde Redux
-    console.log(filteredAndSortedCountries);
+  const totalPage = Math.ceil(filteredAndSortedCountries.length / 10)
+
+  function ContryForPage() {
+    const startIndex = currentPage*10;
+    const endIndex = startIndex+10;
+    return filteredAndSortedCountries.slice(startIndex, endIndex);
+  }
+
+  const Cont = ContryForPage();
+  
   useEffect( 
     () => {
       dispatch(getCountries())
@@ -21,17 +31,26 @@ export default function Home({ nextButtom, prevButtom }) {
   const handleFilterChange = (event) => {
     const filterValue = event.target.value;
     dispatch(filterCountries(filterValue));
-    dispatch(setCurrentPage(0)); 
+     
   };
   
   const handleSortChange = (event) => {
     const sortOption = event.target.value;
     dispatch(sortCountries(sortOption)); 
-    dispatch(setCurrentPage(0))
   };
-  const indexOfLastCountry = currentPage * countriesPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = filteredAndSortedCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+
+  const handlerActivities = (event) => {
+    const activityFilt = event.target.value;
+    dispatch(filterActivity(activityFilt));
+  }
+
+  function NextHandler() {
+    setCurrentPage(page => Math.min(page + 1, totalPage-1))
+  }
+
+  function prevHandler() {
+    setCurrentPage(page => Math.max(page-1, 0))
+  }
   
   return (
     <div className={style.container}>
@@ -40,12 +59,17 @@ export default function Home({ nextButtom, prevButtom }) {
         <h1 className={style.text}>Countries</h1>
       </div>
       <div className={style.buttonContainer}>
-        <button className={style.button} onClick={prevButtom}>
+        <button className={style.button} onClick={prevHandler}>
           Back
         </button>
-        <button className={style.button} onClick={nextButtom}>
+        <button className={style.button} onClick={NextHandler}>
           Next
         </button>
+        <Link to="/form">
+        <button className={style.buttom}>
+          Create Activity
+        </button>
+        </Link>
       </div>
       <div className={style.filters}>
         <select className={style.filterSelect} onChange={handleFilterChange}>
@@ -65,10 +89,15 @@ export default function Home({ nextButtom, prevButtom }) {
           <option value="populationAsc">Population Ascending</option>
           <option value="populationDesc">Population Descending</option>
         </select>
+        <select className={style.filterSelect} onChange={handlerActivities}>
+          <option value="">Select</option>
+          <option value="Activities">Activities</option>
+
+        </select>
       </div>
       <div className={style.containerCountries}>
         <div className={style.countries}>
-          <Cards countries={filteredAndSortedCountries} /> 
+          <Cards countries={Cont} /> 
         </div>
       </div>
     </div>
