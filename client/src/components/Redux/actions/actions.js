@@ -30,7 +30,6 @@ export const getActivities = () => {
 }
 
 export const filterActivity = (activities) => {
-    console.log(activities)
     return {
       type: "SET_ACTIVITIES",
       payload: activities,
@@ -52,7 +51,6 @@ export const Search = (name) => {
   return async (dispatch) => {
     try {
       const {data} =  await axios(`http://localhost:3001/countries/name?pais=${name}`);
-      console.log(data)
       return dispatch({
         type: "SET_SEARCH",
         payload: data,
@@ -64,7 +62,6 @@ export const Search = (name) => {
 }
 
 export const filterCountries = (filterData) => {
-  console.log(filterData)
   return {
     type: "FILTER_COUNTRIES",
     payload: filterData,

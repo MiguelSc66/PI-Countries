@@ -19,17 +19,12 @@ const initialState = {
           ...state,
           activity: action.payload
         }
-        case "SET_CURRENT_PAGE":
-        return {
-            ...state,
-            currentPage: action.payload,
-        };
+        
 
         case "SET_ACTIVITIES":
           const filterdAct = state.allCountries.filter((country) =>  {
             return country.Activities.length >= 1;
           })
-          console.log(filterdAct);
           return {
             ...state,
             countries: action.payload === "Activities" ? filterdAct : state.allCountries
@@ -47,7 +42,6 @@ const initialState = {
           };
       case "SORT_COUNTRIES":
         const sortOption = action.payload;
-        console.log(sortOption)
         const sortedCountries = [...state.countries];
   
         if (sortOption === "nameAsc") {

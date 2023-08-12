@@ -66,27 +66,29 @@ export default function Detail() {
         <span className={style.value}>{country.poblacion}</span>
       </div>
       <h3 className={style.data}>Activities</h3>
-      <div>
-        {activity.map((activites) => ( 
-          <div key={activites.id}>
-            <div className={style.data}>
-              <span className={style.label}>Name:</span>
-              <span className={style.value}>{activites.Nombre}</span>
+      <div className={style.activitiesContainer}>
+        <div className={style.activites}>
+          {activity.map((activites) => ( 
+            <div key={activites.id} className={style.activity}>
+              <div className={style.data}>
+                <span className={style.label}>Name:</span>
+                <span className={style.value}>{activites.Nombre}</span>
+              </div>
+              <div className={style.data}>
+                <span className={style.label}>Dificulty:</span>
+                <span className={style.value}>{activites.Dificultad}</span>
+              </div>
+              <div className={style.data}>
+                <span className={style.label}>Duration:</span>
+                <span className={style.value}>{activites.Duracion}</span>
+              </div>
+              <div className={style.data}>
+                <span className={style.label}>Season:</span>
+                <span className={style.value}>{activites.Temporada}</span>
+              </div>
             </div>
-            <div className={style.data}>
-            <span className={style.label}>Dificulty:</span>
-            <span className={style.value}>{activites.Dificultad}</span>
-            </div>
-            <div className={style.data}>
-            <span className={style.label}>Duration:</span>
-            <span className={style.value}>{activites.Duracion}</span>
-            </div>
-            <div className={style.data}>
-            <span className={style.label}>Season:</span>
-            <span className={style.value}>{activites.Temporada}</span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
