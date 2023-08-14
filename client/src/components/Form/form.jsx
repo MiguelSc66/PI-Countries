@@ -68,17 +68,17 @@ export default function Formu() {
       <form onSubmit={handleSubmit}>
         <label>Nombre:</label>
         <input type="text" name='Nombre' value={activity.Nombre} onChange={handleChange} required />
-        {errors.Nombre && <span style={{ color: 'red' }}>{errors.Nombre}</span>}
+        {errors.Nombre && <span className={style.error}>{errors.Nombre}</span>}
         <br /><br />
 
         <label>Dificultad (1-5):</label>
         <input type="number" name='Dificultad' value={activity.Dificultad} onChange={handleChange} min='1' required />
-        {errors.Dificultad && <span style={{ color: 'red' }}>{errors.Dificultad}</span>}
+        {errors.Dificultad && <span className={style.error}>{errors.Dificultad}</span>}
         <br /><br />
 
         <label>Duración (1-12):</label>
         <input type="number" name='Duracion'value={activity.Duracion} onChange={handleChange} min='1' required />
-        {errors.Duracion && <span style={{ color: 'red' }}>{errors.Duracion}</span>}
+        {errors.Duracion && <span className={style.error}>{errors.Duracion}</span>}
         <br /><br />
 
         <label>Temporada:</label>
@@ -89,7 +89,7 @@ export default function Formu() {
           <option value="invierno">Invierno</option>
           <option value="primavera">Primavera</option>
         </select>
-        {errors.Temporada && <span style={{ color: 'red' }}>{errors.Temporada}</span>}
+        {errors.Temporada && <span className={style.error}>{errors.Temporada}</span>}
         <br /><br />
 
         <label>Pais/Paises</label>
