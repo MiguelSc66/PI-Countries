@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import style from "./SearchBar.module.css"
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Search } from "../Redux/actions/actions";
 
 export default function SearchBar() {
@@ -16,9 +16,6 @@ export default function SearchBar() {
     console.log("hola", searchTerm)
   }
     
-
-    
-    
     return (
       <div className={style.SearchBar}>
         <nav>
@@ -32,8 +29,3 @@ export default function SearchBar() {
       </div>
     );
 };
-
-// const mapStateProps = state => ({
-//   countries:state.countries,
-// });
-// export default connect(mapStateProps, {Search})(SearchBar)

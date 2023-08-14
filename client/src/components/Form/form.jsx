@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postActivity } from '../Redux/actions/actions';
 import { getCountries } from '../Redux/actions/actions';
 import { validateActivityForm } from './validation';
-import { Link } from 'react-router-dom';
+
 
 export default function Formu() {
   const [activity, setActivity] = useState({Nombre:"", Dificultad:"", Duracion:"", Temporada:"", countries:[] })
@@ -31,14 +31,11 @@ export default function Formu() {
       ...err,
       [name]: ErrorsDetec[name]
     }))
-    
   };
 
   
 
   const handlerCountry = (event) => {
-    
-    
     setActivity({
       ...activity,
       countries:[
@@ -55,14 +52,11 @@ export default function Formu() {
       countries:[],
     })
     
-
-    
     dispatch(postActivity(activity))
 
     alert('Actividad turística creada exitosamente!');
      
     setActivity({Nombre:"", Dificultad:"", Duracion:"", Temporada:"", countries:[]})
-    
   };
 
   
@@ -71,9 +65,6 @@ export default function Formu() {
     <div>
       <img className={style.back} src={img} alt="Imagen de fondo" />
       <h1>FORM PAGE</h1>
-      <Link to="/home">
-        <button className={style.backButtom}>Back</button>
-      </Link>
       <form onSubmit={handleSubmit}>
         <label>Nombre:</label>
         <input type="text" name='Nombre' value={activity.Nombre} onChange={handleChange} required />
@@ -112,8 +103,8 @@ export default function Formu() {
         <button type='submit'>Crear Actividad</button>
       </form>
       {activity.countries.map((country, index) => {
-          return <div key={index}>
-            <li>
+          return <div key={index} className={style.list}>
+            <li className={style.countriesList}>
               {country}
             </li>
           </div>

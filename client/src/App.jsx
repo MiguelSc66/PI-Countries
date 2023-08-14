@@ -6,7 +6,7 @@ import Home from "./components/Home/homePage"
 import SearchBar from './components/SearchBar/searchbar'
 import Detail from './components/Detail/Detail'
 import Formu from './components/Form/form'
-
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
   const location = useLocation();
@@ -16,6 +16,7 @@ function App() {
   return (
     <div>
       {location.pathname !== '/' && !location.pathname.startsWith('/detail/') && !location.pathname.startsWith('/form') && <SearchBar/>}
+      {location.pathname !== '/' && <NavBar></NavBar>}
       <Routes>
         <Route path='/' element={<Landingpage />} />
         <Route path='/home' element={<Home  />} />

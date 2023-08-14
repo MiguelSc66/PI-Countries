@@ -4,7 +4,6 @@ import Cards from "../Cards/Cards";
 import imgBack from "../img/pexels-james.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCountries, sortCountries, getCountries, filterActivity  } from "../Redux/actions/actions";
-import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
   const handleFilterChange = (event) => {
     const filterValue = event.target.value;
     dispatch(filterCountries(filterValue));
-     
   };
   
   const handleSortChange = (event) => {
@@ -65,11 +63,6 @@ export default function Home() {
         <button className={style.button} onClick={NextHandler}>
           Next
         </button>
-        <Link to="/form">
-        <button className={style.buttom}>
-          Create Activity
-        </button>
-        </Link>
       </div>
       <div className={style.filters}>
         <select className={style.filterSelect} onChange={handleFilterChange}>

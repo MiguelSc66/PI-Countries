@@ -7,15 +7,15 @@ export default function landing() {
     return <div className={style.container}>
         <img className={style.image} src={image} alt="Imagen de fondo"></img>
         <div className={style.title}> 
-            <h1 className={style.h1}>Global Escapades</h1>
+            <h1 className={style.h1}>World Wander</h1>
         </div>
         <div className={style.descriptionContainer}>
             <div className={style.description}>
                 <p>
-                    ¡Bienvenido a Global Escapades! Explora la diversidad cultural y
-                    natural de cada país y descubre emocionantes actividades turísticas.
-                    Inspírate con nuestras imágenes y planifica tu próxima aventura.
-                    Únete a nuestra comunidad y comparte tus experiencias de viaje.
+                Welcome to World Wander! Embark on a journey to explore the
+                rich cultural and natural wonders of every country, and craft memorable
+                activities for your upcoming travels. Let your wanderlust be ignited by
+                our curated content, and effortlessly plan your dream adventures. 
                 </p>
             </div>
         </div>

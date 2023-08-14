@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  border-radius: 20px; /* Añadir borde redondeado */
+  padding: 10px; /* Espaciado */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.navLinksContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  text-decoration: none;
+  background-color: #0d90cc;
+  color: black;
+  font-size: 18px;
+  border: 1px solid #007bff; /* Agregar un borde */
+  padding: 8px 20px; /* Aumentar el espaciado */
+  border-radius: 5px; /* Borde redondeado */
+  transition: background-color 0.2s, color 0.2s; /* Transición suave para el color de fondo y el texto */
+}
+
+.navLink:hover {
+  background-color: #007bff; /* Cambiar el fondo al hacer hover */
+  color: white; /* Cambiar el color del texto al hacer hover */
+  border: 1px solid transparent; /* Ocultar el borde al hacer hover */
+}
+  
