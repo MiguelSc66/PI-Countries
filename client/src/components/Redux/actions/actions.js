@@ -37,11 +37,22 @@ export const filterActivity = (activities) => {
 };
   
 export const postActivity = (dato)  => {
-  return async (dispatch) => {
+  return async () => {
     try {
       await axios.post(`http://localhost:3001/activities`, dato).then((response) => response.data)
     } catch (err) {
       console.log(err)
+    }
+  }
+}
+
+export const deleteActivity = (id) => {
+  return async(dispatch) =>{
+    try {
+      await axios.delete(`http://localhost:3001/activities/${id}`)
+      dispatch({type: "DELETE_ACTIVITY", payload: id})
+    } catch (err) {
+      console.error("Error al eliminar la actividad", err)
     }
   }
 }

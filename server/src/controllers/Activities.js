@@ -47,7 +47,23 @@ async function createActivity(req, res) {
   }
 }
 
+async function deleteActivity(req, res) {
+  const { id } = req.params;
+
+  try {
+    const activity = await Activity.findOne({ where: { id } });
+    await activity.destroy();
+
+    res.status(200).json({ message: "Actividad eliminada exitosamente" });
+  } catch (err) {
+    console.error("Error al eliminar la actividad", err);
+    res.status(500).json({ error: "Error al eliminar la actividad" });
+  }
+}
+
+
 module.exports = {
   getActivities,
   createActivity,
+  deleteActivity
 };

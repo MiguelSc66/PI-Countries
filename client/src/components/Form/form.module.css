@@ -7,7 +7,7 @@
   object-fit: cover;
   opacity: 0.5;
   z-index: -1;
-  pointer-events: none; /* Evitamos que el fondo interactúe con eventos */
+  pointer-events: none; 
 }
 
 .backButtom:hover {

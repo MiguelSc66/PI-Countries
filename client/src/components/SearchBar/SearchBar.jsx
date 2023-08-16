@@ -13,7 +13,6 @@ export default function SearchBar() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     dispatch(Search(e.target.value))  
-    console.log("hola", searchTerm)
   }
     
     return (

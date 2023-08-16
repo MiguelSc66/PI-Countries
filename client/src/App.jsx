@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Landingpage from "./components/landing-page/landingpage"
 import Home from "./components/Home/homePage"
-import SearchBar from './components/SearchBar/searchbar'
+import SearchBar from './components/SearchBar/SearchBar'
 import Detail from './components/Detail/Detail'
 import Formu from './components/Form/form'
 import NavBar from './components/NavBar/NavBar'

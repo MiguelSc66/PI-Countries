@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import img from "../img/pexels-james.jpg"
 import style from "./form.module.css"
 import { useDispatch, useSelector } from 'react-redux';
-import { postActivity } from '../Redux/actions/actions';
-import { getCountries } from '../Redux/actions/actions';
+import { postActivity, getCountries } from '../Redux/actions/actions';
 import { validateActivityForm } from './validation';
 
 
 export default function Formu() {
   const [activity, setActivity] = useState({Nombre:"", Dificultad:"", Duracion:"", Temporada:"", countries:[] })
-  const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
+  
   const countriesList = useSelector((state) => state.countries);
   const sortedCountries = countriesList.slice().sort((a, b) => a.nombre.localeCompare(b.nombre));
 
