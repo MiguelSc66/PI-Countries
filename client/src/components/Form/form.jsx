@@ -36,11 +36,27 @@ export default function Formu() {
   
 
   const handlerCountry = (event) => {
-    setActivity({
-      ...activity,
-      countries:[
-       ...activity.countries, event.target.value],
-    })
+    const {name, value} = event.target;
+
+    if(value !== "") {
+      setActivity({
+        ...activity,
+        countries:[
+         ...activity.countries, event.target.value],
+      })
+      const errorCo = validateActivityForm({...activity, [name]: value})
+      setErrors((err) => ({
+        ...err,
+        [name]: errorCo[name]
+      }))
+    } else {
+      setErrors((err) => ({
+        ...err,
+        [name]:"",
+      }))
+    }
+
+
   }
 
   const handleSubmit = () => {
@@ -54,7 +70,7 @@ export default function Formu() {
     
     dispatch(postActivity(activity))
 
-    alert('Actividad turística creada exitosamente!');
+    alert('Tourist activity created successfully!');
      
     setActivity({Nombre:"", Dificultad:"", Duracion:"", Temporada:"", countries:[]})
   };
@@ -66,41 +82,43 @@ export default function Formu() {
       <img className={style.back} src={img} alt="Imagen de fondo" />
       <h1>FORM PAGE</h1>
       <form onSubmit={handleSubmit}>
-        <label>Nombre:</label>
+        <label>Name:</label>
         <input type="text" name='Nombre' value={activity.Nombre} onChange={handleChange} required />
         {errors.Nombre && <span className={style.error}>{errors.Nombre}</span>}
         <br /><br />
 
-        <label>Dificultad (1-5):</label>
+        <label>Difficulty (1-5):</label>
         <input type="number" name='Dificultad' value={activity.Dificultad} onChange={handleChange} min='1' required />
         {errors.Dificultad && <span className={style.error}>{errors.Dificultad}</span>}
         <br /><br />
 
-        <label>Duración (1-12):</label>
+        <label>Duration (1-12):</label>
         <input type="number" name='Duracion'value={activity.Duracion} onChange={handleChange} min='1' required />
         {errors.Duracion && <span className={style.error}>{errors.Duracion}</span>}
         <br /><br />
 
-        <label>Temporada:</label>
+        <label>Season:</label>
         <select name='Temporada' value={activity.Temporada} onChange={handleChange} required>
-          <option value="">Seleccionar</option>
-          <option value="verano">Verano</option>
-          <option value="otoño">Otoño</option>
-          <option value="invierno">Invierno</option>
-          <option value="primavera">Primavera</option>
+          <option value="">Select</option>
+          <option value="verano">Summer</option>
+          <option value="otoño">Autumn</option>
+          <option value="invierno">Winter</option>
+          <option value="primavera">Spring</option>
         </select>
         {errors.Temporada && <span className={style.error}>{errors.Temporada}</span>}
         <br /><br />
 
-        <label>Pais/Paises</label>
+        <label>Countries</label>
         <select name='countries' onChange={handlerCountry} required>
+          <option value="">Select</option>
           {sortedCountries.map((country) => (
             <option key={country.id} value={country.id}>{country.nombre}</option>
           ))}
         </select>
+        {errors.countries && <span className={style.error}>{errors.countries}</span>}
         <br /><br />
 
-        <button type='submit'>Crear Actividad</button>
+        <button  type='submit'>Create Activity</button>
       </form>
       {activity.countries.map((country, index) => {
           return <div key={index} className={style.list}>

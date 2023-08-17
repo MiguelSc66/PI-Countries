@@ -16,10 +16,10 @@ export const getCountries = () => {
 }
 
 export const getActivities = () => {
-  return async (disp) => {
+  return async (dispatch) => {
     try {
       const {data} = await axios(`http://localhost:3001/activities`)
-      return disp({
+      return dispatch({
         type:"GET_ACTIVITIES",
         payload: data,
       })
@@ -40,6 +40,7 @@ export const postActivity = (dato)  => {
   return async () => {
     try {
       await axios.post(`http://localhost:3001/activities`, dato).then((response) => response.data)
+      
     } catch (err) {
       console.log(err)
     }

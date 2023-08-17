@@ -18,7 +18,7 @@ async function createActivity(req, res) {
   
 
   try {
-    // Crea la actividad turística en la base de datos
+    
     if(!Nombre || !Dificultad || !Duracion || !Temporada || !countries) throw Error("Faltan propiedades");
 
     const newActivity = await Activity.create({
