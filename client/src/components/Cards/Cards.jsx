@@ -10,7 +10,9 @@ export default function Cards({countries}) {
             id={obj.id} 
             bandera={obj.bandera}
             nombre={obj.nombre}
-            continente={obj.continente}>
+            continente={obj.continente}
+            poblacion={obj.poblacion}
+            >
             </Card>
         })}
     </div>

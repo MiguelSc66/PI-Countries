@@ -9,6 +9,7 @@ import { validateActivityForm } from './validation';
 export default function Formu() {
   const [activity, setActivity] = useState({Nombre:"", Dificultad:"", Duracion:"", Temporada:"", countries:[] })
   const [errors, setErrors] = useState({});
+  const [countryError, setCountryError] = useState("");
   const dispatch = useDispatch();
   
   const countriesList = useSelector((state) => state.countries);
@@ -36,28 +37,27 @@ export default function Formu() {
   
 
   const handlerCountry = (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
 
-    if(value !== "") {
-      setActivity({
-        ...activity,
-        countries:[
-         ...activity.countries, event.target.value],
-      })
-      const errorCo = validateActivityForm({...activity, [name]: value})
+    if (value !== "") {
+      if (!activity.countries.includes(value)) {
+        setActivity({
+          ...activity,
+          countries: [...activity.countries, value],
+        });
+        const errorCo = validateActivityForm({...activity, [name]: value})
       setErrors((err) => ({
         ...err,
         [name]: errorCo[name]
       }))
+      }
     } else {
       setErrors((err) => ({
         ...err,
-        [name]:"",
-      }))
+        [name]: "",
+      }));
     }
-
-
-  }
+  };
 
   const handleSubmit = () => {
     setErrors({

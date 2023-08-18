@@ -4,6 +4,8 @@ export function validateActivityForm(input) {
     // Validación del campo Nombre
     if (!input.Nombre) {
       errors.Nombre = "You must enter a name";
+    } else if (input.Nombre.length >= 18) {
+      errors.Nombre = "Name cannot exceed 18 characters"
     }
   
     // Validación del campo Dificultad
